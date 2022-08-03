@@ -1,0 +1,4 @@
+data/img/*.png
+data/json/*.json
+__pycache__
+.vscode
