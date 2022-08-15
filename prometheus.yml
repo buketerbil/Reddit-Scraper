@@ -1,0 +1,31 @@
+global:
+  scrape_interval: 15s # How frequently to scrape targets from jobs
+  scrape_timeout: 10s # If there is no response from instance do not try to scrape
+  evaluation_interval: 15s # How frequently to evaluate rules (e.g. reload graphs with new data)
+# Prometheus alert manager, left for now
+alerting:
+  alertmanagers:
+  - follow_redirects: true
+    scheme: http
+    timeout: 10s
+    api_version: v2
+    static_configs:
+    - targets: []
+# Specific configuration for jobs
+scrape_configs:
+  - job_name: prometheus # Name of the job, can be anything
+    honor_timestamps: true # Use timestamps provided by job
+    scrape_interval: 15s # As before, but for this job
+    scrape_timeout: 10s # ^
+    metrics_path: /metrics # Where metrics are located w.r.t. port (localhost:9090/metrics)
+    scheme: http # Configures the protocol scheme used for requests (localhost is http)
+    follow_redirects: true
+    static_configs:
+    - targets:
+      - 0.0.0.0:9090
+  - job_name: 'node'
+    scrape_interval: '5s'
+    static_configs:
+      - targets: ['localhost:9100']
+        labels:
+          group: 'production'

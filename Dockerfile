@@ -17,13 +17,14 @@ RUN apt-get -y update &&\
     wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE`/chromedriver_linux64.zip &&\
     # installing unzip and using it to unzip temporary directory for Chromedriver
     apt-get install -yqq unzip &&\
-    unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/ 
+    unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
 
 #setting display port in order to not get crashes
 ENV DISPLAY=:99
 
-COPY . .
+COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
+COPY . .
 CMD ["python", "justry.py"]
 
 
