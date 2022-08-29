@@ -41,4 +41,8 @@ The scraper image can be pulled through the command: docker pull bukete/redditsc
 <img width="1172" alt="Screenshot 2022-08-29 at 15 45 03" src="https://user-images.githubusercontent.com/102605064/187228600-0c7f105c-4924-4b8a-8201-c0a2b8ec1db9.png">
 
 # Monitoring through Prometheus and Grafana
+Prometheus was installed and its YAML file was configured to monitor the scraper on Docker container on EC2 instance. Then, Prometheus was used to monitor the container used.
+
+Thereafter, Grafana was used for monitoring metric visualisations.
+
 
