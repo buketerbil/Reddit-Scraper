@@ -21,3 +21,24 @@ Some of the methods were tested using the unittest module of Python, it is possi
 
 # Cloud Storage 
 I used Amazon Web Services (AWS) software tools to store my objects in an S3 bucket through a web service interface and RDS (Relational Database Service) to set up, operate and scalably store my tabular data in the cloud. 
+As the code runs, the types of data are saved locally under the folder 'data'; 
+- images under subfolder 'img' 
+- text files of post titles, comments, unique ID, image source & body under subfolder 'json' which also contains the test for the JSON file.
+Subsequently, the data are saved locally and to Amazon S3 bucket with the same file format.
+
+Data has been converted to tabular data through pandas and SQL alchemy to store in Postgres. The tabular data in Postgres was connected to AWS RDS to be stored in the cloud.
+
+# Deployment of the Scraper: Cloud Computing
+AWS EC2 instance was created and the scraper was run on the instance where the scraper is to be deployed. Connection to the EC2 instance was ensured through Terminal. 
+
+# Docker containerisation and GUI image 
+To achieve a scalably ditributable scraper, I attempted to first build the Docker image locally however it was time-consuming and complicated to do this due to several complications faced with an M1 chip, e.g.:
+- It is not possible to run headless Chrome on Macs with M1 chip
+- Multi-architecture builds (AMD64 vs ARM64 instruction set architectures [ISAs])
+
+As it is not possible to run headless Chrome on Macs with M1 chip, the Docker container was built and ran directly on the EC2 instance. Then it was pushed to DockerHub which made the image publicly accessible.
+The scraper image can be pulled through the command: docker pull bukete/redditscraper
+<img width="1172" alt="Screenshot 2022-08-29 at 15 45 03" src="https://user-images.githubusercontent.com/102605064/187228600-0c7f105c-4924-4b8a-8201-c0a2b8ec1db9.png">
+
+# Monitoring through Prometheus and Grafana
+
