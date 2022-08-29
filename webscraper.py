@@ -16,9 +16,9 @@ from downloadimage import download_image
 
 topics = {
     'gaming': ['gaming', 'gamingnews'],
-    'politics': [],
-    'cryptocurrency': [],
-    'anime': []
+    'politics': ['politics', 'conservative', 'neoliberal'],
+    'cryptocurrency': ['trading', 'StockMarket', 'stocks'],
+    'anime': ['animenews', 'anime', 'animeranks']
 }
 
 class Scraper: 
